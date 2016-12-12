@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AdvertisementsService WSDL service -->
+
+  <service name="Advertisements" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://marketplace.com"/>
+      <parameter name="wsdlServiceElement" value="AdvertisementsService"/>
+      <parameter name="schemaQualified" value="http://marketplace.com"/>
+      <parameter name="wsdlServicePort" value="Advertisements"/>
+      <parameter name="className" value="com.marketplace.Advertisements"/>
+      <parameter name="wsdlPortType" value="Advertisements"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="additem" qname="operNS:additem" returnQName="retNS:additemReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userId" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:itemname" type="tns:string"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:itemdesc" type="tns:string"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:itemprice" type="tns:string"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:itemquantity" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pricetype" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addBid" qname="operNS:addBid" returnQName="retNS:addBidReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userId" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ad_id" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:price" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="placeOrder" qname="operNS:placeOrder" returnQName="retNS:placeOrderReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cart_id" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:quantity" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:updatedQty" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertOrder" qname="operNS:insertOrder" returnQName="retNS:insertOrderReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:userId" type="tns:int"/>
+        <parameter xmlns:pns="http://marketplace.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:totalprice" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getFixedpriceAdvertisements" qname="operNS:getFixedpriceAdvertisements" returnQName="retNS:getFixedpriceAdvertisementsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://marketplace.com" xmlns:retNS="http://marketplace.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAuctionAdvertisements" qname="operNS:getAuctionAdvertisements" returnQName="retNS:getAuctionAdvertisementsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="insertOrder placeOrder getFixedpriceAdvertisements additem getAuctionAdvertisements addBid"/>
+
+  </service>
+</deployment>

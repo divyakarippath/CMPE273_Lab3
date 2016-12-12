@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://marketplace.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://marketplace.com" xmlns:intf="http://marketplace.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://marketplace.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="additem">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+      <element name="itemname" type="xsd:string"/>
+      <element name="itemdesc" type="xsd:string"/>
+      <element name="itemprice" type="xsd:string"/>
+      <element name="itemquantity" type="xsd:int"/>
+      <element name="pricetype" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="additemResponse">
+    <complexType>
+     <sequence>
+      <element name="additemReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBid">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+      <element name="ad_id" type="xsd:int"/>
+      <element name="quantity" type="xsd:int"/>
+      <element name="price" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBidResponse">
+    <complexType>
+     <sequence>
+      <element name="addBidReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="placeOrder">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="cart_id" type="xsd:int"/>
+      <element name="quantity" type="xsd:int"/>
+      <element name="updatedQty" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="placeOrderResponse">
+    <complexType>
+     <sequence>
+      <element name="placeOrderReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertOrder">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+      <element name="totalprice" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertOrderResponse">
+    <complexType>
+     <sequence>
+      <element name="insertOrderReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getFixedpriceAdvertisements">
+    <complexType/>
+   </element>
+   <element name="getFixedpriceAdvertisementsResponse">
+    <complexType>
+     <sequence>
+      <element name="getFixedpriceAdvertisementsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAuctionAdvertisements">
+    <complexType/>
+   </element>
+   <element name="getAuctionAdvertisementsResponse">
+    <complexType>
+     <sequence>
+      <element name="getAuctionAdvertisementsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="additemResponse">
+
+      <wsdl:part element="impl:additemResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertOrderResponse">
+
+      <wsdl:part element="impl:insertOrderResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="additemRequest">
+
+      <wsdl:part element="impl:additem" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBidResponse">
+
+      <wsdl:part element="impl:addBidResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="placeOrderRequest">
+
+      <wsdl:part element="impl:placeOrder" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAuctionAdvertisementsRequest">
+
+      <wsdl:part element="impl:getAuctionAdvertisements" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFixedpriceAdvertisementsResponse">
+
+      <wsdl:part element="impl:getFixedpriceAdvertisementsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBidRequest">
+
+      <wsdl:part element="impl:addBid" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertOrderRequest">
+
+      <wsdl:part element="impl:insertOrder" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="placeOrderResponse">
+
+      <wsdl:part element="impl:placeOrderResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAuctionAdvertisementsResponse">
+
+      <wsdl:part element="impl:getAuctionAdvertisementsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getFixedpriceAdvertisementsRequest">
+
+      <wsdl:part element="impl:getFixedpriceAdvertisements" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Advertisements">
+
+      <wsdl:operation name="additem">
+
+         <wsdl:input message="impl:additemRequest" name="additemRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:additemResponse" name="additemResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBid">
+
+         <wsdl:input message="impl:addBidRequest" name="addBidRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBidResponse" name="addBidResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="placeOrder">
+
+         <wsdl:input message="impl:placeOrderRequest" name="placeOrderRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:placeOrderResponse" name="placeOrderResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertOrder">
+
+         <wsdl:input message="impl:insertOrderRequest" name="insertOrderRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:insertOrderResponse" name="insertOrderResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFixedpriceAdvertisements">
+
+         <wsdl:input message="impl:getFixedpriceAdvertisementsRequest" name="getFixedpriceAdvertisementsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getFixedpriceAdvertisementsResponse" name="getFixedpriceAdvertisementsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAuctionAdvertisements">
+
+         <wsdl:input message="impl:getAuctionAdvertisementsRequest" name="getAuctionAdvertisementsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAuctionAdvertisementsResponse" name="getAuctionAdvertisementsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AdvertisementsSoapBinding" type="impl:Advertisements">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="additem">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="additemRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="additemResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBid">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBidRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBidResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="placeOrder">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="placeOrderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="placeOrderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertOrder">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertOrderRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertOrderResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getFixedpriceAdvertisements">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getFixedpriceAdvertisementsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getFixedpriceAdvertisementsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAuctionAdvertisements">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAuctionAdvertisementsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAuctionAdvertisementsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AdvertisementsService">
+
+      <wsdl:port binding="impl:AdvertisementsSoapBinding" name="Advertisements">
+
+         <wsdlsoap:address location="http://localhost:8080/EbayApp/services/Advertisements"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
